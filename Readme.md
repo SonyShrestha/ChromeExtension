@@ -137,7 +137,7 @@ Event page runs only when required.<br>
 <br><br>
 
 # Context Menu 
-It is possible to display our chrome extension into contexxt menu (options displayed when we right click in Chrome)<br>
+It is possible to display our chrome extension as a context menu item (options displayed when we right click in Chrome)<br>
 <br><br>
 
 # Create background and event page and working with Context Menu

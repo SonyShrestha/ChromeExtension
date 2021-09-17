@@ -24,11 +24,19 @@ This type of extension runs in the background<br>
         <li>Description for extension (description)</li>
         <li>Icon for extension (icon-> 128, 48, 16)</li>
             Google recommends to provide icon of three different sizes: 128X128, 48X48, 16X16 so that it can choose among icons depending on where it has to display our extension
-        <li>Browser Action extension (default_icon, default_popup)</li>
+        <li>Browser Action extension (browser_action--> default_icon, default_popup, default_title)</li>
             We need to specify that our extension is browser action extension<br>
+            default_icon-> Icon that represents extension
+            default_popup-> HTML file that represents UI of respective extension
+            default_title-> Text that gets displayed when we hover over chrome extension
+        <li>Page Action Extension (page_action--> default_icon, default_popup, default_title)</li>
+            We need to specify that our extension is page action extension<br>
+            default_icon-> Icon that represents extension
+            default_popup-> HTML file that represents UI of respective extension
+            default_title-> Text that gets displayed when we hover over chrome extension
 </ol>
 <br>
-Sample manifest file
+Sample manifest file for browser_action extension
 
 ```
 {
@@ -43,7 +51,8 @@ Sample manifest file
     },
     "browser_action":{
         "default_icon":"icon16.png",
-        "default_popup":"popup.html"
+        "default_popup":"popup.html",
+        "default_title":"Budget Manager"
     },
     "options_page":"option.html",
     "permissions":[
@@ -178,4 +187,28 @@ Chrome storage can listen to the changes being made to chrome storage value.<br>
 chrome.storage.onChanged.addListener(function(changes,storageName){
     chrome.browserAction.setBadgeText({"text":changes.total.newValue.toString()});
 })
+```
+<br><br>
+
+# Page Action Chrome Extension
+This extension will remain active only on specific chrome pages.<br>
+To create page action chrome extension, we should use page_action key in manifest.json file.<br>
+<br><br>
+
+# Content Scripts
+<ol>
+    <li>They are capable of manipulating DOM</li>
+    <li>Runs in the context of the web page</li>
+    <li>Can change DOM</li>
+    <li>Font color, hyperlinks, structure DOM</li>
+    <li>Cannot use all chrome API's</li>
+</ol>
+<br>
+
+```
+Note:
+-> Content Page cannot highlight page action icon.
+-> Event Page can hightlight page action icon.
+-> Popup Script cannot change font style of any particular HTML element.
+-> Content Script can change font style of any particular HTML element.
 ```

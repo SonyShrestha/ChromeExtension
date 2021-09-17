@@ -81,7 +81,7 @@ To add External CSS file <br>
 
 # Chrome Storage
 Chrome Storage is a place where we can store value within a variable.<br>
-We need permissions to use chrome storage. This permission is defined in manifest.json file.<br>
+We need permissions to use chrome storage. This permission is defined in manifest.json file.(permissions-> storage)<br>
 
 ```
 # Get one variable
@@ -129,3 +129,53 @@ chrome.notifications.create('',notifOptions)
 Note: <br>
 chrome.notifications.create('',notifOptions) will give notification each time a condition is met.<br>
 chrome.notifications.create('notifName',notifOptions) will give notification once for individual notifName provided.<br>
+<br><br>
+
+# Background Page vs Event Page
+Background page runs at all times an consume resources even when not required.<br>
+Event page runs only when required.<br>
+<br><br>
+
+# Context Menu 
+It is possible to display our chrome extension into contexxt menu (options displayed when we right click in Chrome)<br>
+<br><br>
+
+# Create background and event page and working with Context Menu
+To create background and event page, we need to specify its information in manifest page and set permission to display extension into context menu (permissions-> contextMenus)<br>
+
+```
+-- Manifest file format
+
+"background":{
+    "scripts":["eventPage.js"],
+    "persistent":false
+},
+
+"permissions":[
+    "storage",
+    "notifications",
+    "contextMenus"
+]
+```
+
+```
+-- Context menu to appear on selection of text on chrome browser
+
+var contextMenuItem={
+    "id":"spendMoney",
+    "title":"SpendMoney",
+    "contexts":["selection"]
+};
+chrome.contextMenus.create(contextMenuItem);
+```
+<br><br>
+
+# Badge
+Badges appear over the Browser Action Icon and include a short text.<br>
+Chrome storage can listen to the changes being made to chrome storage value.<br>
+
+```
+chrome.storage.onChanged.addListener(function(changes,storageName){
+    chrome.browserAction.setBadgeText({"text":changes.total.newValue.toString()});
+})
+```

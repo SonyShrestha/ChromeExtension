@@ -1,15 +1,14 @@
 # Extension Types
-a) Browser Action
-This type of extension stays in toolbar and is accessible at all times
-
-b) Page Action
-This type of extension stays in toolbar but grey-ed out and is accessible only on certain pages
-
-c) Neither Browser Action nor Page Action
-This type of extension runs in the background
-
-
-Writing a Manifest file
+a) Browser Action<br>
+This type of extension stays in toolbar and is accessible at all times<br>
+<br>
+b) Page Action<br>
+This type of extension stays in toolbar but grey-ed out and is accessible only on certain pages<br>
+<br>
+c) Neither Browser Action nor Page Action<br>
+This type of extension runs in the background<br>
+<br>
+# Writing a Manifest file
 a) It contains information about extension.
 b) It is written in JSON format.
 c) Mandatory fields:
